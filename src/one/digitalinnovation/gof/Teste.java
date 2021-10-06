@@ -1,5 +1,8 @@
 package one.digitalinnovation.gof;
 
+import one.digitalinnovation.gof.singleton.SingletonLazy;
+import one.digitalinnovation.gof.strategy.*;
+
 public class Teste {
 
     public static void main(String[] args) {
@@ -9,6 +12,22 @@ public class Teste {
 
         SingletonLazy lazy2 = SingletonLazy.getInstance();
         System.out.println(lazy2);
+
+        Comportamento normal = new ComportamentoNormal();
+        Comportamento defensivo = new ComportamentoDefensivo();
+        Comportamento agressivo = new ComportamentoOfensivo();
+
+        Robo robo = new Robo();
+        robo.setComportamento(normal);
+
+
+        robo.mover();
+        robo.mover();
+
+        robo.setComportamento(defensivo);
+        robo.mover();
+        robo.setComportamento(agressivo);
+        robo.mover();
 
     }
 }
